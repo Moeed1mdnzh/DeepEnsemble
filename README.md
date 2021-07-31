@@ -107,6 +107,6 @@ prediction = base.predict(models, sample, extra)
 #### step-6(optional)
 Evaluate the model
 ```python
-performance = evaluate(models, X_test, y_test, extra, batch_size)
+performance = base.evaluate(models, X_test, y_test, extra, batch_size)
 ```
 Hopefully you succeeded at creating your own ensembling model :)
