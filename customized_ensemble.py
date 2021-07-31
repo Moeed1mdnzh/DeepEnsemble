@@ -1,12 +1,12 @@
 import os
 import numpy as np
 from scipy.stats import mode
-from keras.models import Model
-from keras.layers import Reshape
-from keras.models import Sequential
-from keras.models import load_model
-from keras.layers import Concatenate
-from keras.layers.core import Flatten, Dense
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Reshape
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.models import load_model
+from tensorflow.keras.layers import Concatenate
+from tensorflow.keras.layers.core import Flatten, Dense
 
 ###Only trainable for individual architectures
 class CustomizedEnsemble:
