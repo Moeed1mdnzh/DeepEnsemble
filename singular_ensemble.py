@@ -1,10 +1,10 @@
 import os
 import numpy as np
 from scipy.stats import mode
-from keras.models import Model
-from keras.models import Sequential
-from keras.models import load_model
-from keras.layers import Concatenate
+from tensorflow.keras.models import Model
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.models import load_model
+from tensorflow.keras.layers import Concatenate
 
 ###Only trainable for a specific architecture
 class SingularEnsemble:
