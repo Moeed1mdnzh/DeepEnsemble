@@ -56,7 +56,7 @@ prediction = base.predict(model, sample, extra)
 #### step-6(optional)
 Evaluate the model
 ```python
-evaluate(model, X_test, y_test, extra, batch_size)
+preformance = base.evaluate(model, X_test, y_test, extra, batch_size)
 ```
 ### customized_ensemble
 The point of this file is to build ensembles of several individual architecture.<br />
@@ -107,6 +107,6 @@ prediction = base.predict(models, sample, extra)
 #### step-6(optional)
 Evaluate the model
 ```python
-evaluate(models, X_test, y_test, extra, batch_size)
+performance = evaluate(models, X_test, y_test, extra, batch_size)
 ```
 Hopefully you succeeded at creating your own ensembling model :)
