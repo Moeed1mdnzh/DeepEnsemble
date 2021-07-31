@@ -49,7 +49,7 @@ base.aggregate()
 #### step-5
 Load And Predict
 ```python
-from singular_ensemble import SingularEnsemble
+from singular_ensemble import SingularEnsemble as base
 model, extra = base.load(PATH)
 prediction = base.predict(model, sample, extra)
 ```
@@ -99,7 +99,7 @@ base.aggregate()
 #### step-5
 Load And Predict except we have to do an extra thing which is to decompose the model back to separated models.
 ```python
-from customized_ensemble import CustomizedEnsemble
+from customized_ensemble import CustomizedEnsemble as base
 model, extra = base.load(PATH)
 models = base.decompose(model, extra)
 prediction = base.predict(models, sample, extra)
