@@ -8,8 +8,8 @@ from keras.layers import Concatenate
 
 ###Only trainable for a specific architecture
 class SingularEnsemble:
-  def __init__(self, layers : list, classes : int, n_estimators : int = 50, voting : str = "hard", verbose : int = 2, save_to=False):
-    self.org = layers
+  def __init__(self, layers : list, classes : int, n_estimators : int = 50, voting : str = "hard", verbose : int = 2, save_to = False):
+    self.org = layers 
     self.n_estimators =  n_estimators
     self.voting = voting
     self.models = []
