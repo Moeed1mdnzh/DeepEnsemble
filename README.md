@@ -24,12 +24,12 @@ Build the ensembling-object based on your own conditions
 ```python
 base = SingularEnsemble(layers, classes, n_estimators, voting = "hard", verbose = 2, save_to = False)
 ``` 
-1-*layers* : **Must be a list which containes all the layers of your model**
-2-*classes* : **The number of your data classes**
-3-*n_estimators* : **The number of the estimators to be created for your model**
-4-*voting* : **The type of voting for making predictions(The same argument in sklearn.ensemble.VotingClassifer)**
-4-*verbose* : **Defines clearing the screen after how many fits**
-5-*save_to* : **Supposed to be the path of saving the model.If given a string,the model will be saved there otherwise leave it**
+1-*layers* : **Must be a list which containes all the layers of your model**<br />
+2-*classes* : **The number of your data classes**<br />
+3-*n_estimators* : **The number of the estimators to be created for your model**<br />
+4-*voting* : **The type of voting for making predictions(The same argument in sklearn.ensemble.VotingClassifer)**<br />
+4-*verbose* : **Defines clearing the screen after how many fits**<br />
+5-*save_to* : **Supposed to be the path of saving the model.If given a string,the model will be saved there otherwise leave it**<br />
 #### step-3
 Compile the model by passing a dictionary as the parameters.For instance
 ```python
@@ -71,10 +71,10 @@ Build the ensembling-object based on your own conditions
 ```python
 base = CustomizedEnsemble(models : list, voting : str = "hard", verbose : int = 2, save_to = False)
 ``` 
-1-*models* : **Must be a list which containes all the various models**
-2-*voting* : **The type of voting for making predictions(The same argument in sklearn.ensemble.VotingClassifer)**
-3-*verbose* : **Defines clearing the screen after how many fits**
-4-*save_to* : **Supposed to be the path of saving the model.If given a string,the model will be saved there otherwise leave it**
+1-*models* : **Must be a list which containes all the various models**<br />
+2-*voting* : **The type of voting for making predictions(The same argument in sklearn.ensemble.VotingClassifer)**<br />
+3-*verbose* : **Defines clearing the screen after how many fits**<br />
+4-*save_to* : **Supposed to be the path of saving the model.If given a string,the model will be saved there otherwise leave it**<br />
 
 #### step-3
 Compile the model by passing a list which contains all the parameters for each model as a dictionary.For instance
