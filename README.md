@@ -15,7 +15,7 @@ pip install -r requirements.txt
 The point of this file is to build ensembles of only a unique architecture.<br />
 Let's find out how you can use it in your very own models.
 #### step-1
-Put the file in same directory as your own files and import the file and import the ensembling-object in your main file.
+Put the file in same directory as your own files and import the ensembling-object in your main file.
 ```python
 from singular_ensemble import SingularEnsemble
 ``` 
@@ -62,7 +62,7 @@ preformance = base.evaluate(model, X_test, y_test, extra, batch_size)
 The point of this file is to build ensembles of several individual architecture.<br />
 Let's also see how this one works.How exciting!
 #### step-1
-Put the file in same directory as your own files and import the file and import the ensembling-object in your main file.
+Put the file in same directory as your own files and import the ensembling-object in your main file.
 ```python
 from customized_ensemble import CustomizedEnsemble
 ``` 
