@@ -1,6 +1,6 @@
 # DeepEnsemble
 I brought the VotingClassifier from sklearn to deep networks such as **CNNs**, **ANNs** and etc to provide the capability of training deep networks by ensembling.The
-repo consists 2 separate files <br /> *singular_ensemble* <br /> *customized_ensemble* <br />
+repo consists 2 separate files <br /> *singular_ensemble.py* <br /> *customized_ensemble.py* <br />
 ## Main-steps
 #### step-1
 Clone the repo using the below command<br />
@@ -11,7 +11,7 @@ Install the required packages
 ```python
 pip install -r requirements.txt 
 ``` 
-### singular_ensemble
+### singular_ensemble.py
 The point of this file is to build ensembles of only a unique architecture.<br />
 Let's find out how you can use it in your very own models.
 #### step-1
@@ -58,7 +58,7 @@ Evaluate the model
 ```python
 preformance = base.evaluate(model, X_test, y_test, extra, batch_size)
 ```
-### customized_ensemble
+### customized_ensemble.py
 The point of this file is to build ensembles of several individual architecture.<br />
 Let's also see how this one works.How exciting!
 #### step-1
