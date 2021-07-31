@@ -108,7 +108,7 @@ class CustomizedEnsemble:
 
   #Model evaluation
   @staticmethod
-  def evaluate(models, X_test : np.ndarray, y_test : np.ndarray, extra : list, batch_size : int, loss_func = None) -> list:
+  def evaluate(models, X_test : np.ndarray, y_test : np.ndarray, extra : list, batch_size : int) -> list:
     losses, accs = [], []
     to_bin = False
     if y_test.ndim > 1:
