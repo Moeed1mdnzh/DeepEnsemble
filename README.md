@@ -39,6 +39,8 @@ Fit the model in the same way.
 ```python
 base.fit({"x":X_train, "y":y_train, "batch_size":32, "epochs":10, "validation_data":(X_test, y_test)})
 ``` 
+After fitting the model you should see two new files named `model.h5` and `var.txt` if `save_to` in the ensembling-object is set to a path.<br />
+`model.h5` is the saved model and `var.txt` contains some important variables so don't touch them.
 #### step-4
 Connect all models into one and save it(if `save_to` is set to a path) by typing
 ```python
@@ -56,7 +58,55 @@ Evaluate the model
 ```python
 evaluate(model, X_test, y_test, extra, batch_size)
 ```
-
-evaluate(model, X_test : np.ndarray, y_test : np.ndarray, extra : list, batch_size : int, loss_func = None)
-
+### customized_ensemble
+The point of this file is to build ensembles of several individual architecture.<br />
+Let's also see how this one works.How exciting!
+#### step-1
+Put the file in same directory as your own files and import the file and import the ensembling-object in your main file.
+```python
+from customized_ensemble import CustomizedEnsemble
 ``` 
+#### step-2
+Build the ensembling-object based on your own conditions
+```python
+base = CustomizedEnsemble(models : list, voting : str = "hard", verbose : int = 2, save_to = False)
+``` 
+1-*models* : **Must be a list which containes all the various models**
+2-*voting* : **The type of voting for making predictions(The same argument in sklearn.ensemble.VotingClassifer)**
+3-*verbose* : **Defines clearing the screen after how many fits**
+4-*save_to* : **Supposed to be the path of saving the model.If given a string,the model will be saved there otherwise leave it**
+
+#### step-3
+Compile the model by passing a list which contains all the parameters for each model as a dictionary.For instance
+```python
+base.compile([{"loss":"binary_crossentropy", "optimizer":"adam", "metrics":["accuracy"]},
+              {"loss":"binary_crossentropy", "optimizer":"rmsprop", "metrics":["accuracy"]},
+              {"loss":"binary_crossentropy", "optimizer":"sgd", "metrics":["accuracy"]}])
+``` 
+Fit the model in the same way.
+```python
+base.fit([{"x":X_train, "y":y_train, "batch_size":32, "epochs":10, "validation_data":(X_test, y_test)},
+          {"x":X_train, "y":y_train, "batch_size":32, "epochs":10, "validation_data":(X_test, y_test)},
+          {"x":X_train, "y":y_train, "batch_size":32, "epochs":5, "validation_data":(X_test, y_test)}])
+``` 
+After fitting the model you should see two new files named `model.h5` and `var.txt` if `save_to` in the ensembling-object is set to a path.<br />
+`model.h5` is the saved model and `var.txt` contains some important variables so don't touch them.
+#### step-4
+Connect all models into one and save it(if `save_to` is set to a path) by typing
+```python
+base.aggregate()
+``` 
+#### step-5
+Load And Predict except we have to do an extra thing which is to decompose the model back to separated models.
+```python
+from customized_ensemble import CustomizedEnsemble
+model, extra = base.load(PATH)
+models = base.decompose(model, extra)
+prediction = base.predict(models, sample, extra)
+```
+#### step-6(optional)
+Evaluate the model
+```python
+evaluate(models, X_test, y_test, extra, batch_size)
+```
+Hopefully you succeeded at creating your own ensembling model :)
