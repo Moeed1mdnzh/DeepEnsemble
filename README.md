@@ -28,8 +28,8 @@ base = SingularEnsemble(layers, classes, n_estimators, voting = "hard", verbose 
 2-*classes* : **The number of your data classes**<br />
 3-*n_estimators* : **The number of the estimators to be created for your model**<br />
 4-*voting* : **The type of voting for making predictions(The same argument in sklearn.ensemble.VotingClassifer)**<br />
-4-*verbose* : **Defines clearing the screen after how many fits**<br />
-5-*save_to* : **Supposed to be the path of saving the model.If given a string,the model will be saved there otherwise leave it**<br />
+5-*verbose* : **Defines clearing the screen after how many fits**<br />
+6-*save_to* : **Supposed to be the path of saving the model.If given a string,the model will be saved there otherwise leave it**<br />
 #### step-3
 Compile the model by passing a dictionary as the parameters.For instance
 ```python
