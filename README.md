@@ -1,5 +1,5 @@
 # DeepEnsemble
-I brought the VotingClassifier from sklearn to deep networks such as **CNNs**, **ANNs** and etc to provide the capability of training deep networks by ensembling.The
+I brought the VotingClassifier from sklearn to deep networks such as **CNNs**, **ANNs**, **RNNs** and etc to provide the capability of training deep networks by ensembling.The
 repo consists 2 separate files <br /> *singular_ensemble.py* <br /> *customized_ensemble.py* <br />
 ## Main-steps
 #### step-1
