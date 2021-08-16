@@ -6,7 +6,7 @@ from tensorflow.keras.layers import Reshape
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import Concatenate
-from tensorflow.keras.layers.core import Flatten, Dense
+from tensorflow.keras.layers import Flatten, Dense
 
 ###Only trainable for individual architectures
 class CustomizedEnsemble:
