@@ -1,7 +1,7 @@
 # DeepEnsemble
 I brought the VotingClassifier from sklearn to deep networks such as **CNNs**, **ANNs**, **RNNs** and etc to provide the capability of training deep networks by ensembling.The
 repo consists 2 separate files <br /> *singular_ensemble.py* <br /> *customized_ensemble.py* <br />
-## Main-steps
+## Main steps
 #### step 1
 Clone the repo using the below command<br />
 `git clone https://github.com/Moeed1mdnzh/DeepEnsemble.git`<br />
