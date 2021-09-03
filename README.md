@@ -105,7 +105,7 @@ models = base.decompose(model, extra)
 prediction = base.predict(models, sample, extra)
 ```
 #### step 6(optional)
-Evaluate the model
+Evaluate the model.
 ```python
 performance = base.evaluate(models, X_test, y_test, extra, batch_size)
 ```
