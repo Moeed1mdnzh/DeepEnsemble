@@ -1,5 +1,5 @@
 # DeepEnsemble
-I brought the VotingClassifier from sklearn to deep networks such as **CNNs**, **ANNs**, **RNNs** and etc to provide the capability of training deep networks by ensembling.The
+I brought the VotingClassifier and BaggingClassifier from sklearn to deep networks such as **CNNs**, **ANNs**, **RNNs** and etc to provide the capability of training deep networks by ensembling.The
 repo consists 2 separate files <br /> *singular_ensemble.py* <br /> *customized_ensemble.py* <br />
 ## Main steps
 #### step 1
@@ -22,22 +22,24 @@ from singular_ensemble import SingularEnsemble
 #### step 2
 Build the ensembling-object based on your own conditions
 ```python
-base = SingularEnsemble(layers, classes, n_estimators, voting = "hard", verbose = 2, save_to = False)
+base = SingularEnsemble(layers, classes, n_estimators, voting = "hard", sampling = False, bootstrap = True, verbose = 1, save_to = False)
 ``` 
 1-*layers* : **Must be a list which containes all the layers of your model**<br />
 2-*classes* : **The number of your data classes**<br />
 3-*n_estimators* : **The number of the estimators to be created for your model**<br />
 4-*voting* : **The type of voting for making predictions(The same argument in sklearn.ensemble.VotingClassifer)**<br />
-5-*verbose* : **Clears the screen after the given number of fits**<br />
-6-*save_to* : **Supposed to be the path of saving the model.If given a string,the model will be saved there otherwise leave it**<br />
+5-*sampling* : **Wether the model should perform bagging-pasting**<br />
+6-*bootstrap* : **Wether add replacement to sampling(Only works if sampling is set to true)**<br />
+7-*verbose* : **Clears the screen after the given number of fits**<br />
+8-*save_to* : **Supposed to be the path of saving the model.If given a string,the model will be saved there otherwise leave it**<br />
 #### step 3
 Compile the model by passing a dictionary as the parameters.For instance
 ```python
-base.compile({"loss":"binary_crossentropy", "optimizer":"adam", "metrics":["accuracy"]})
+base.compile({"loss": "binary_crossentropy", "optimizer": "adam", "metrics": ["accuracy"]})
 ``` 
 Fit the model in the same way.
 ```python
-base.fit({"x":X_train, "y":y_train, "batch_size":32, "epochs":10, "validation_data":(X_test, y_test)})
+base.fit({"x": X_train, "y": y_train, "batch_size": 32, "epochs": 10, "validation_data": (X_test, y_test)})
 ``` 
 After fitting the model you should see two new files named `model.h5` and `var.txt` if `save_to` in the ensembling-object is set to a path.<br />
 `model.h5` is the saved model and `var.txt` contains some important variables so don't touch them.
@@ -53,13 +55,15 @@ from singular_ensemble import SingularEnsemble as base
 model, extra = base.load(PATH)
 prediction = base.predict(model, sample, extra)
 ```
+Note : `PATH` must be the directory in which the model was saved, for instance : "my_models/cnn/" <br />
+**Warning : Do not attempt to change the name of the model otherwise the it can't be loaded properly **
 #### step 6(optional)
 Evaluate the model
 ```python
 preformance = base.evaluate(model, X_test, y_test, extra, batch_size)
 ```
 ### customized_ensemble.py
-The point of this file is to build ensembles of several individual architecture.<br />
+The point of this file is to build ensembles of several individual architectures.<br />
 Let's also see how this one works.How exciting!
 #### step 1
 Put the file in same directory as your own files and import the ensembling-object in your main file.
@@ -69,25 +73,27 @@ from customized_ensemble import CustomizedEnsemble
 #### step 2
 Build the ensembling-object based on your own conditions
 ```python
-base = CustomizedEnsemble(models : list, voting : str = "hard", verbose : int = 2, save_to = False)
+base = CustomizedEnsemble(models, voting = "hard", sampling = False, bootstrap = True, verbose = 1, save_to = False)
 ``` 
 1-*models* : **Must be a list which containes all the various models**<br />
 2-*voting* : **The type of voting for making predictions(The same argument in sklearn.ensemble.VotingClassifer)**<br />
-3-*verbose* : **Cleara the screen after the given number of fits**<br />
-4-*save_to* : **Supposed to be the path of saving the model.If given a string,the model will be saved there otherwise leave it**<br />
+3-*sampling* : **Wether the model should perform bagging-pasting**<br />
+4-*bootstrap* : **Wether add replacement to sampling(Only works if sampling is set to true)**<br />
+5-*verbose* : **Clears the screen after the given number of fits**<br />
+6-*save_to* : **Supposed to be the path of saving the model.If given a string,the model will be saved there otherwise leave it**<br />
 
 #### step 3
 Compile the model by passing a list which contains all the parameters for each model as a dictionary.For instance
 ```python
-base.compile([{"loss":"binary_crossentropy", "optimizer":"adam", "metrics":["accuracy"]},
-              {"loss":"binary_crossentropy", "optimizer":"rmsprop", "metrics":["accuracy"]},
-              {"loss":"binary_crossentropy", "optimizer":"sgd", "metrics":["accuracy"]}])
+base.compile([{"loss": "binary_crossentropy", "optimizer": "adam", "metrics": ["accuracy"]},
+              {"loss": "binary_crossentropy", "optimizer": "rmsprop", "metrics": ["accuracy"]},
+              {"loss": "binary_crossentropy", "optimizer": "sgd", "metrics": ["accuracy"]}])
 ``` 
 Fit the model in the same way.
 ```python
-base.fit([{"x":X_train, "y":y_train, "batch_size":32, "epochs":10, "validation_data":(X_test, y_test)},
-          {"x":X_train, "y":y_train, "batch_size":32, "epochs":10, "validation_data":(X_test, y_test)},
-          {"x":X_train, "y":y_train, "batch_size":32, "epochs":5, "validation_data":(X_test, y_test)}])
+base.fit([{"x": X_train, "y": y_train, "batch_size": 32, "epochs":10, "validation_data": (X_test, y_test)},
+          {"x": X_train, "y": y_train, "batch_size": 32, "epochs":10, "validation_data": (X_test, y_test)},
+          {"x": X_train, "y": y_train, "batch_size": 32, "epochs":5, "validation_data": (X_test, y_test)}])
 ``` 
 After fitting the model you should see two new files named `model.h5` and `var.txt` if `save_to` in the ensembling-object is set to a path.<br />
 `model.h5` is the saved model and `var.txt` contains some important variables so don't touch them.
@@ -104,6 +110,8 @@ model, extra = base.load(PATH)
 models = base.decompose(model, extra)
 prediction = base.predict(models, sample, extra)
 ```
+Note : `PATH` must be the directory in which the model was saved, for instance : "my_models/cnn/" <br />
+**Warning : Do not attempt to change the name of the model otherwise the it can't be loaded properly **
 #### step 6(optional)
 Evaluate the model.
 ```python
