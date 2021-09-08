@@ -55,8 +55,8 @@ from singular_ensemble import SingularEnsemble as base
 model, extra = base.load(PATH)
 prediction = base.predict(model, sample, extra)
 ```
-Note : `PATH` must be the directory in which the model was saved, for instance : "my_models/cnn/" <br />
-** Warning : Do not attempt to change the name of the model otherwise the it can't be loaded properly **
+Note : `PATH` must be the directory in which the model was saved, for instance : "my_models/cnn/"<br />
+**Warning : Do not attempt to change the name of the model otherwise the it can't be loaded properly **
 #### step 6(optional)
 Evaluate the model
 ```python
@@ -110,8 +110,8 @@ model, extra = base.load(PATH)
 models = base.decompose(model, extra)
 prediction = base.predict(models, sample, extra)
 ```
-Note : `PATH` must be the directory in which the model was saved, for instance : "my_models/cnn/" <br />
-** Warning : Do not attempt to change the name of the model otherwise the it can't be loaded properly **
+Note : `PATH` must be the directory in which the model was saved, for instance : "my_models/cnn/"<br />
+**Warning : Do not attempt to change the name of the model otherwise the it can't be loaded properly **
 #### step 6(optional)
 Evaluate the model.
 ```python
