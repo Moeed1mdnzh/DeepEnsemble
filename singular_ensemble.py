@@ -9,7 +9,7 @@ from tensorflow.keras.models import  clone_model
 
 #  Only trainable for a specific architecture
 class SingularEnsemble:
-    def __init__(self, layers : list, classes : int, n_estimators : int = 50, voting : str = "hard", sampling = False, bootstrap = True, verbose : int = 1, save_to = False):
+    def __init__(self, layers : list, classes : int, n_estimators : int = 50, voting : str = "hard", sampling : bool = False, bootstrap : bool = True, verbose : int = 1, save_to = False):
         self.org = layers 
         self.n_estimators = n_estimators
         self.voting = voting
